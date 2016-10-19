@@ -8,6 +8,8 @@
 
 #import "FirstViewController.h"
 
+#define DEFAULT_CLOCK 10
+
 @interface FirstViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
 @property (strong, nonatomic) NSTimer *countDownTimer;
@@ -20,13 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.secondsCountDown = 25 * 60;
+    self.secondsCountDown = DEFAULT_CLOCK;
     long minutePart = self.secondsCountDown / 60;
     long secondPart = self.secondsCountDown % 60;
     NSString *timeString = [[NSString alloc] initWithFormat:@"%ld:%.2ld", minutePart, secondPart];
     self.countDownLabel.text = timeString;
     NSLog(@"%d", self.startTimerButton.isSelected);
-    self.startTimerButton.layer.cornerRadius = 3.0f;
+    self.startTimerButton.layer.cornerRadius = 10.0f;
     
     
 }
@@ -35,10 +37,20 @@
     if (self.isStart == NO) {
         self.countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
         self.countDownLabel.textColor = [UIColor grayColor];
-        self.countDownLabel.font = [UIFont systemFontOfSize: 60];
+        self.countDownLabel.font = [UIFont systemFontOfSize: 100];
+        [self.startTimerButton setTitle:@"取消" forState:UIControlStateNormal];
         self.isStart = YES;
     } else {
-//        [self.countDownTimer ]
+        [self.countDownTimer invalidate];
+        self.countDownTimer = nil;
+        self.countDownLabel.textColor = [UIColor blackColor];
+        self.countDownLabel.font = [UIFont systemFontOfSize: 80];
+        [self.startTimerButton setTitle:@"开始" forState:UIControlStateNormal];
+        self.secondsCountDown = DEFAULT_CLOCK;
+        self.countDownLabel.text = [NSString stringWithFormat:@"%ld:%.2ld",
+                                    self.secondsCountDown / 60,
+                                    self.secondsCountDown % 60];
+        self.isStart = NO;
     }
     
 }
@@ -51,6 +63,16 @@
     NSLog(@"%d", self.startTimerButton.isSelected);
     if(self.secondsCountDown == 0) {
         [self.countDownTimer invalidate];
+        [self.startTimerButton setTitle:@"完成" forState:UIControlStateNormal];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"一个番茄时间已完成" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"完成" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
+            
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"记录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        [self presentViewController:alert animated:true completion:nil];
     }
 }
 
