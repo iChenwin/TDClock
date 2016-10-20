@@ -6,13 +6,13 @@
 //  Copyright © 2016年 wayne. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "ToDoViewController.h"
 
-@interface SecondViewController ()
+@interface ToDoViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation ToDoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
