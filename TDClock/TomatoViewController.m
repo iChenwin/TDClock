@@ -6,18 +6,18 @@
 //  Copyright © 2016年 wayne. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "TomatoViewController.h"
 
 #define DEFAULT_CLOCK 10
 
-@interface FirstViewController ()
+@interface TomatoViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
 @property (strong, nonatomic) NSTimer *countDownTimer;
 @property (weak, nonatomic) IBOutlet UIButton *startTimerButton;
 @property (assign, nonatomic) BOOL isStart;
 @end
 
-@implementation FirstViewController
+@implementation TomatoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

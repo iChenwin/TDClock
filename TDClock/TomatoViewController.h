@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface TomatoViewController : UIViewController
 @property (assign, nonatomic) long secondsCountDown;
 
 @end

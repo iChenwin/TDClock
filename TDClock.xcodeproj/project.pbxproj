@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		B0B79B391DB4C01100645ED3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B79B381DB4C01100645ED3 /* main.m */; };
 		B0B79B3C1DB4C01100645ED3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B79B3B1DB4C01100645ED3 /* AppDelegate.m */; };
-		B0B79B3F1DB4C01100645ED3 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B79B3E1DB4C01100645ED3 /* FirstViewController.m */; };
+		B0B79B3F1DB4C01100645ED3 /* TomatoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B79B3E1DB4C01100645ED3 /* TomatoViewController.m */; };
 		B0B79B421DB4C01100645ED3 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B79B411DB4C01100645ED3 /* SecondViewController.m */; };
 		B0B79B451DB4C01100645ED3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B79B431DB4C01100645ED3 /* Main.storyboard */; };
 		B0B79B4A1DB4C01100645ED3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B79B481DB4C01100645ED3 /* LaunchScreen.storyboard */; };
@@ -21,8 +21,8 @@
 		B0B79B381DB4C01100645ED3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B0B79B3A1DB4C01100645ED3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B0B79B3B1DB4C01100645ED3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B0B79B3D1DB4C01100645ED3 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		B0B79B3E1DB4C01100645ED3 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		B0B79B3D1DB4C01100645ED3 /* TomatoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TomatoViewController.h; sourceTree = "<group>"; };
+		B0B79B3E1DB4C01100645ED3 /* TomatoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomatoViewController.m; sourceTree = "<group>"; };
 		B0B79B401DB4C01100645ED3 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		B0B79B411DB4C01100645ED3 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		B0B79B441DB4C01100645ED3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,8 +63,8 @@
 			children = (
 				B0B79B3A1DB4C01100645ED3 /* AppDelegate.h */,
 				B0B79B3B1DB4C01100645ED3 /* AppDelegate.m */,
-				B0B79B3D1DB4C01100645ED3 /* FirstViewController.h */,
-				B0B79B3E1DB4C01100645ED3 /* FirstViewController.m */,
+				B0B79B3D1DB4C01100645ED3 /* TomatoViewController.h */,
+				B0B79B3E1DB4C01100645ED3 /* TomatoViewController.m */,
 				B0B79B401DB4C01100645ED3 /* SecondViewController.h */,
 				B0B79B411DB4C01100645ED3 /* SecondViewController.m */,
 				B0B79B431DB4C01100645ED3 /* Main.storyboard */,
@@ -158,7 +158,7 @@
 			files = (
 				B0B79B421DB4C01100645ED3 /* SecondViewController.m in Sources */,
 				B0B79B3C1DB4C01100645ED3 /* AppDelegate.m in Sources */,
-				B0B79B3F1DB4C01100645ED3 /* FirstViewController.m in Sources */,
+				B0B79B3F1DB4C01100645ED3 /* TomatoViewController.m in Sources */,
 				B0B79B391DB4C01100645ED3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
