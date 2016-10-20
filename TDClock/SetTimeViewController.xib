@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetTimeViewController">
+            <connections>
+                <outlet property="timePickerView" destination="PGb-qc-S7e" id="2Aq-jz-QPh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" showsSelectionIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGb-qc-S7e">
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="lHP-Nh-JiA"/>
+                        <outlet property="delegate" destination="-1" id="vNK-er-SeB"/>
+                    </connections>
+                </pickerView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwV-K9-sez">
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWb-Fb-vvv">
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="pzJ-xT-pt2"/>
+                        <constraint firstAttribute="height" constant="33" id="skd-z6-cq0"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="确定">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="PGb-qc-S7e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="17c-gn-IGM"/>
+                <constraint firstAttribute="trailing" secondItem="PGb-qc-S7e" secondAttribute="trailing" id="1Il-eg-nGe"/>
+                <constraint firstItem="PGb-qc-S7e" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="K6s-hF-M9I"/>
+                <constraint firstItem="PWb-Fb-vvv" firstAttribute="top" secondItem="PGb-qc-S7e" secondAttribute="bottom" constant="22" id="Sdw-t3-ZJd"/>
+                <constraint firstItem="PGb-qc-S7e" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="U1z-YN-gI6"/>
+                <constraint firstItem="PGb-qc-S7e" firstAttribute="top" secondItem="xwV-K9-sez" secondAttribute="bottom" constant="22" id="dr9-dZ-BvJ"/>
+                <constraint firstItem="PWb-Fb-vvv" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="0.5" id="oe9-8t-3EI"/>
+                <constraint firstItem="xwV-K9-sez" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uXL-k5-Gul"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+</document>

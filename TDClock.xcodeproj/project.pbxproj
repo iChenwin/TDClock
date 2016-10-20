@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B07333931DB88FE200FA505D /* SetTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B07333911DB88FE200FA505D /* SetTimeViewController.m */; };
+		B07333941DB88FE200FA505D /* SetTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B07333921DB88FE200FA505D /* SetTimeViewController.xib */; };
 		B0B79B391DB4C01100645ED3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B79B381DB4C01100645ED3 /* main.m */; };
 		B0B79B3C1DB4C01100645ED3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B79B3B1DB4C01100645ED3 /* AppDelegate.m */; };
 		B0B79B3F1DB4C01100645ED3 /* TomatoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B79B3E1DB4C01100645ED3 /* TomatoViewController.m */; };
@@ -17,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B07333901DB88FE200FA505D /* SetTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetTimeViewController.h; sourceTree = "<group>"; };
+		B07333911DB88FE200FA505D /* SetTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTimeViewController.m; sourceTree = "<group>"; };
+		B07333921DB88FE200FA505D /* SetTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetTimeViewController.xib; sourceTree = "<group>"; };
 		B0B79B341DB4C01100645ED3 /* TDClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B79B381DB4C01100645ED3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B0B79B3A1DB4C01100645ED3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,6 +72,9 @@
 				B0B79B3E1DB4C01100645ED3 /* TomatoViewController.m */,
 				B0B79B401DB4C01100645ED3 /* ToDoViewController.h */,
 				B0B79B411DB4C01100645ED3 /* ToDoViewController.m */,
+				B07333901DB88FE200FA505D /* SetTimeViewController.h */,
+				B07333911DB88FE200FA505D /* SetTimeViewController.m */,
+				B07333921DB88FE200FA505D /* SetTimeViewController.xib */,
 				B0B79B431DB4C01100645ED3 /* Main.storyboard */,
 				B0B79B481DB4C01100645ED3 /* LaunchScreen.storyboard */,
 				B0B79B4B1DB4C01100645ED3 /* Info.plist */,
@@ -143,6 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B07333941DB88FE200FA505D /* SetTimeViewController.xib in Resources */,
 				B0B79B4A1DB4C01100645ED3 /* LaunchScreen.storyboard in Resources */,
 				B0CD2BE31DB76E0E00A99DC9 /* Assets.xcassets in Resources */,
 				B0B79B451DB4C01100645ED3 /* Main.storyboard in Resources */,
@@ -160,6 +169,7 @@
 				B0B79B3C1DB4C01100645ED3 /* AppDelegate.m in Sources */,
 				B0B79B3F1DB4C01100645ED3 /* TomatoViewController.m in Sources */,
 				B0B79B391DB4C01100645ED3 /* main.m in Sources */,
+				B07333931DB88FE200FA505D /* SetTimeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

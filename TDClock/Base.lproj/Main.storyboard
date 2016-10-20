@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--番茄-->
+        <!--Tomato View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="TomatoViewController" sceneMemberID="viewController">
@@ -38,29 +38,22 @@
                                     <action selector="startTimer:" destination="9pv-A4-QxB" eventType="touchUpInside" id="xA0-Pe-8Tc"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wwq-d6-Eir">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="68" id="bYL-tk-1Up"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem id="kqA-Vt-UQt">
-                                        <barButtonItem key="rightBarButtonItem" title="设置时长" id="bDT-vf-i5f"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Wwq-d6-Eir" secondAttribute="trailing" id="0rP-lu-8ov"/>
                             <constraint firstItem="LbI-pv-rO7" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="60" id="3Lr-c1-19B"/>
                             <constraint firstItem="LbI-pv-rO7" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="30" id="WzY-e2-Gj1"/>
-                            <constraint firstItem="Wwq-d6-Eir" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="bfg-vI-3Vc"/>
-                            <constraint firstItem="Wwq-d6-Eir" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="fk6-hb-QaA"/>
                             <constraint firstItem="LbI-pv-rO7" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="lFZ-Or-p8R"/>
                             <constraint firstItem="KQZ-1w-vlD" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" constant="0.5" id="wWx-cq-Bwp"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="番茄" image="first" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" id="ByM-Cg-6h1">
+                        <barButtonItem key="rightBarButtonItem" title="设置时长" id="qGF-JG-7SL">
+                            <connections>
+                                <action selector="setTimeAction:" destination="9pv-A4-QxB" id="NDg-8f-gZm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="countDownLabel" destination="KQZ-1w-vlD" id="I0p-3p-eyt"/>
                         <outlet property="startTimerButton" destination="LbI-pv-rO7" id="SMg-HO-yR9"/>
@@ -68,9 +61,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="1688.8" y="-320.68965517241384"/>
         </scene>
-        <!--待办-->
+        <!--To Do Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="ToDoController" sceneMemberID="viewController">
@@ -102,11 +95,11 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="待办" image="second" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" id="JIE-zK-PSJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="1688.8" y="359.37031484257875"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -119,13 +112,51 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="CPg-PC-bE1" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="Hyh-jG-YeA" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--番茄-->
+        <scene sceneID="fB4-K5-uib">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CPg-PC-bE1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="番茄" image="first" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RUq-Kk-pQs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="GOL-fZ-1J9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FZP-HE-ufR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+        </scene>
+        <!--待办-->
+        <scene sceneID="5jb-Nf-8g9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hyh-jG-YeA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="待办" image="second" id="cPa-gy-q4n"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ylz-dn-Z51">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="nrb-tn-QiK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AU6-mv-gRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
         </scene>
     </scenes>
     <resources>

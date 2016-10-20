@@ -7,6 +7,7 @@
 //
 
 #import "TomatoViewController.h"
+#import "SetTimeViewController.h"
 
 #define DEFAULT_CLOCK 10
 
@@ -74,6 +75,14 @@
         }]];
         [self presentViewController:alert animated:true completion:nil];
     }
+}
+
+- (IBAction)setTimeAction:(id)sender {
+    SetTimeViewController *setTimeVC = [[SetTimeViewController alloc] initWithVC:self];
+    [self setHidesBottomBarWhenPushed:YES];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backBtn;
+    [self.navigationController pushViewController:setTimeVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
