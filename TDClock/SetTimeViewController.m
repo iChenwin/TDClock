@@ -10,8 +10,8 @@
 
 @interface SetTimeViewController ()
 @property (strong, nonatomic) UIViewController *fatherVC;
-@property (assign, nonatomic) NSArray *hourArr;
-@property (assign, nonatomic) NSArray *minArr;
+@property (strong, nonatomic) NSArray *minArr;
+@property (assign, nonatomic) NSInteger savedTime;
 @property (weak, nonatomic) IBOutlet UIPickerView *timePickerView;
 
 @end
@@ -26,17 +26,13 @@
         self.title = @"番茄时长";
         UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStyleDone target:self action:@selector(saveAction:)];
         self.navigationItem.rightBarButtonItem = doneBtn;
-        
-//        self.hourArr = [NSArray arrayWithObjects: @"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"11", @"12", nil];
-//        self.minArr = [NSArray arrayWithObjects: @"0", @"5", @"10", @"15", @"20", @"25", @"30", @"35", @"40", @"45", @"50", @"55", nil];
+        self.minArr = [NSArray arrayWithObjects: @"Default", @"5", @"10", @"15", @"20", @"25", @"30", @"35", @"40", @"45", @"50", @"55", nil];
     }
     return self;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.hourArr = [NSArray arrayWithObjects: @"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"11", @"12", nil];
-    self.minArr = [NSArray arrayWithObjects: @"0", @"5", @"10", @"15", @"20", @"25", @"30", @"35", @"40", @"45", @"50", @"55", nil];
 }
 
 - (void)viewDidLoad {
@@ -44,6 +40,15 @@
     // Do any additional setup after loading the view from its nib.
     self.timePickerView.delegate = self;
     self.timePickerView.dataSource = self;
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSInteger savedTime = [userDefault integerForKey:@"savedTime"];
+    if (0 == savedTime) {
+        [self.timePickerView selectRow:5 inComponent:0 animated:NO];
+    } else {
+        [self.timePickerView selectRow:savedTime / 5 inComponent:0 animated:NO];
+        self.savedTime = savedTime;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,40 +57,25 @@
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 2;
+    return 1;
 }
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (1 == component) {
-        return [self.minArr count];
-    } else {
-        return [self.hourArr count];
-    }
+    return [self.minArr count];
 }
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if (1 == component) {
-        return self.minArr[row];
-    } else {
-        return self.hourArr[row];
-    }
+    return self.minArr[row];
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:
-(NSInteger)row inComponent:(NSInteger)component
-{
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     // 使用一个UIAlertView来显示用户选中的列表项
-    UIAlertView* alert = [[UIAlertView alloc]
-                          initWithTitle:@"提示"
-                          message:[NSString stringWithFormat:@"你选中的时间是：%@:%@"
-                                   , [self.hourArr objectAtIndex:row], [self.minArr objectAtIndex:row]]
-                          delegate:nil
-                          cancelButtonTitle:@"确定"
-                          otherButtonTitles:nil];
-    [alert show];
+    self.savedTime = [self.minArr[row] integerValue];
 }
 
 -(void)saveAction:(id)sender {
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setInteger:self.savedTime forKey:@"savedTime"];
     [self.fatherVC.navigationController popViewControllerAnimated:YES];
 }
 /*

@@ -23,7 +23,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.secondsCountDown = DEFAULT_CLOCK;
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSInteger savedTime = [userDefault integerForKey:@"savedTime"];
+    
+    if (0 == savedTime) {
+        self.secondsCountDown = 1500;
+    } else {
+        self.secondsCountDown = savedTime * 60;
+    }
+
     long minutePart = self.secondsCountDown / 60;
     long secondPart = self.secondsCountDown % 60;
     NSString *timeString = [[NSString alloc] initWithFormat:@"%ld:%.2ld", minutePart, secondPart];
@@ -31,8 +39,32 @@
     NSLog(@"%d", self.startTimerButton.isSelected);
     self.startTimerButton.layer.cornerRadius = 10.0f;
     
-    
+    self.navigationController.view.backgroundColor = [UIColor whiteColor];
 }
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSInteger savedTime = [userDefault integerForKey:@"savedTime"];
+    
+    if (self.isStart == NO) {
+        if (0 == savedTime) {
+            self.secondsCountDown = 1500;
+        } else {
+            self.secondsCountDown = savedTime * 60;
+        }
+        
+        long minutePart = self.secondsCountDown / 60;
+        long secondPart = self.secondsCountDown % 60;
+        NSString *timeString = [[NSString alloc] initWithFormat:@"%ld:%.2ld", minutePart, secondPart];
+        self.countDownLabel.text = timeString;
+    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+}
+
 - (IBAction)startTimer:(id)sender {
     
     if (self.isStart == NO) {
@@ -47,7 +79,14 @@
         self.countDownLabel.textColor = [UIColor blackColor];
         self.countDownLabel.font = [UIFont systemFontOfSize: 80];
         [self.startTimerButton setTitle:@"开始" forState:UIControlStateNormal];
-        self.secondsCountDown = DEFAULT_CLOCK;
+        
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        NSInteger savedTime = [userDefault integerForKey:@"savedTime"];
+        if (0 == savedTime) {
+            self.secondsCountDown = 1500;
+        } else {
+            self.secondsCountDown = savedTime * 60;
+        }
         self.countDownLabel.text = [NSString stringWithFormat:@"%ld:%.2ld",
                                     self.secondsCountDown / 60,
                                     self.secondsCountDown % 60];
@@ -79,7 +118,7 @@
 
 - (IBAction)setTimeAction:(id)sender {
     SetTimeViewController *setTimeVC = [[SetTimeViewController alloc] initWithVC:self];
-    [self setHidesBottomBarWhenPushed:YES];
+    [setTimeVC setHidesBottomBarWhenPushed:YES];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = backBtn;
     [self.navigationController pushViewController:setTimeVC animated:YES];

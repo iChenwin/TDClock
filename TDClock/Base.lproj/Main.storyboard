@@ -48,7 +48,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ByM-Cg-6h1">
-                        <barButtonItem key="rightBarButtonItem" title="设置时长" id="qGF-JG-7SL">
+                        <barButtonItem key="rightBarButtonItem" title="设置" id="qGF-JG-7SL">
                             <connections>
                                 <action selector="setTimeAction:" destination="9pv-A4-QxB" id="NDg-8f-gZm"/>
                             </connections>
