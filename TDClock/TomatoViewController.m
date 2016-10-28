@@ -39,7 +39,8 @@
     NSLog(@"%d", self.startTimerButton.isSelected);
     self.startTimerButton.layer.cornerRadius = 10.0f;
     
-    self.navigationController.view.backgroundColor = [UIColor whiteColor];
+//    self.navigationController.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated {

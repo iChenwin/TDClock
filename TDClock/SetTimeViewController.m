@@ -13,6 +13,7 @@
 @property (strong, nonatomic) NSArray *minArr;
 @property (assign, nonatomic) NSInteger savedTime;
 @property (weak, nonatomic) IBOutlet UIPickerView *timePickerView;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end
 
@@ -27,6 +28,7 @@
         UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStyleDone target:self action:@selector(saveAction:)];
         self.navigationItem.rightBarButtonItem = doneBtn;
         self.minArr = [NSArray arrayWithObjects: @"Default", @"5", @"10", @"15", @"20", @"25", @"30", @"35", @"40", @"45", @"50", @"55", nil];
+        
     }
     return self;
 }
@@ -41,14 +43,22 @@
     self.timePickerView.delegate = self;
     self.timePickerView.dataSource = self;
     
+    self.timePickerView.hidden = YES;
+    
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSInteger savedTime = [userDefault integerForKey:@"savedTime"];
     if (0 == savedTime) {
         [self.timePickerView selectRow:5 inComponent:0 animated:NO];
+        [self.timeLabel setText:self.minArr[5]];
     } else {
         [self.timePickerView selectRow:savedTime / 5 inComponent:0 animated:NO];
         self.savedTime = savedTime;
+        [self.timeLabel setText:self.minArr[savedTime / 5]];
     }
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelTappedAction:)];
+    self.timeLabel.userInteractionEnabled = YES;
+    [self.timeLabel addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,6 +81,14 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     // 使用一个UIAlertView来显示用户选中的列表项
     self.savedTime = [self.minArr[row] integerValue];
+    self.timePickerView.hidden = YES;
+    self.timeLabel.hidden = NO;
+    [self.timeLabel setText:self.minArr[row]];
+}
+
+- (void)labelTappedAction:(UITapGestureRecognizer *)sender {
+    self.timePickerView.hidden = NO;
+    self.timeLabel.hidden = YES;
 }
 
 -(void)saveAction:(id)sender {
