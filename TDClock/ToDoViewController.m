@@ -10,13 +10,17 @@
 
 @interface ToDoViewController ()
 @property (strong, nonatomic) NSMutableArray *eventArr;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation ToDoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    //缺少以下这两句，会报“[UIViewController tableView:numberOfRowsInSection:]: unrecognized selector sent to instance”错误
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
 
 
@@ -49,7 +53,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 30;
+    return 45;
 }
 
 @end

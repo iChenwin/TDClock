@@ -8,6 +8,7 @@
 
 #import "TomatoViewController.h"
 #import "SetTimeViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 #define DEFAULT_CLOCK 10
 
@@ -93,7 +94,6 @@
                                     self.secondsCountDown % 60];
         self.isStart = NO;
     }
-    
 }
 
 -(void)timeFireMethod{
@@ -105,6 +105,8 @@
     if(self.secondsCountDown == 0) {
         [self.countDownTimer invalidate];
         [self.startTimerButton setTitle:@"完成" forState:UIControlStateNormal];
+        
+        AudioServicesPlaySystemSound(1005);
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"一个番茄时间已完成" message:@"" preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"完成" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
