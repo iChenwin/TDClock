@@ -9,6 +9,7 @@
 #import "TomatoViewController.h"
 #import "SetTimeViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 #define DEFAULT_CLOCK 10
 
@@ -17,6 +18,8 @@
 @property (strong, nonatomic) NSTimer *countDownTimer;
 @property (weak, nonatomic) IBOutlet UIButton *startTimerButton;
 @property (assign, nonatomic) BOOL isStart;
+//@property (strong, nonatomic) NSError *err;
+@property (strong, nonatomic) AVAudioPlayer *player;
 @end
 
 @implementation TomatoViewController
@@ -39,6 +42,16 @@
     self.countDownLabel.text = timeString;
     NSLog(@"%d", self.startTimerButton.isSelected);
     self.startTimerButton.layer.cornerRadius = 10.0f;
+    
+    NSError *err;
+    self.player = [[AVAudioPlayer alloc]
+                             initWithContentsOfURL:
+                             [NSURL fileURLWithPath:
+                              [[NSBundle mainBundle]pathForResource:@"music"
+                                                             ofType:@"m4a"
+                                                        inDirectory:@"/"]]
+                             error:&err ];//使用本地URL创建
+    self.player.delegate = self;
     
 //    self.navigationController.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
@@ -71,6 +84,12 @@
     
     if (self.isStart == NO) {
         self.countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
+        
+        self.player.volume = 0.8;
+        self.player.numberOfLoops = 3;
+        [self.player prepareToPlay];
+        [self.player play];
+        
         self.countDownLabel.textColor = [UIColor grayColor];
         self.countDownLabel.font = [UIFont systemFontOfSize: 100];
         [self.startTimerButton setTitle:@"取消" forState:UIControlStateNormal];
@@ -80,6 +99,9 @@
         self.countDownTimer = nil;
         self.countDownLabel.textColor = [UIColor blackColor];
         self.countDownLabel.font = [UIFont systemFontOfSize: 80];
+        
+        [self.player stop];
+        
         [self.startTimerButton setTitle:@"开始" forState:UIControlStateNormal];
         
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
